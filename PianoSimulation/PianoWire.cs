@@ -16,7 +16,7 @@ namespace PianoSimulation
             _SampleRate = SampleRate;
         }
 
-        public double NoteFrequency {
+        public double NoteFrequency{
             get {
                 return _NoteFreq;
             }
@@ -33,9 +33,12 @@ namespace PianoSimulation
             Random rand = new Random();
             double MIN_VALUE = -0.5;
             double MAX_VALUE = 0.5;
-            for (int i = 0; i < CircArr.Length;i++) {
-                CircArr[i] = rand.NextDouble() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
+            double[] tempArr = new double[CircArr.Length];
+            for (int i = 0; i < tempArr.Length;i++) {
+                tempArr[i] = rand.NextDouble() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
             }
+            CircArr.Fill(tempArr);
+            
         }
 
         public double Sample(double decay=0.996) {
