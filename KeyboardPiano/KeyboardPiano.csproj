@@ -4,6 +4,10 @@
     <ProjectReference Include="..\PianoSimulation\PianoSimulation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PianoSimulation\PianoSimulation.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>

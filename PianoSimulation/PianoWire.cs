@@ -7,27 +7,33 @@ namespace PianoSimulation
 {
     public class PianoWire:IMusicalString
     {
-        private CircularArray CircArr;
-        private double _NoteFreq;
-        private int _NumSamples;
+        private CircularArray _circArr;
+        private double _noteFreq;
+        private int _numSamples;
 
         public PianoWire(double NoteFreq, int SampleRate) {
-            _NoteFreq = NoteFreq;
-            _NumSamples = Convert.ToInt32(SampleRate/NoteFreq);
-            CircArr = new CircularArray(_NumSamples);
+            _noteFreq = NoteFreq;
+            _numSamples = Convert.ToInt32(SampleRate/NoteFreq);
+            _circArr = new CircularArray(_numSamples);
 
         }
 
         public double NoteFrequency{
             get {
-                return _NoteFreq;
+                return _noteFreq;
             }
 
         }
 
         public int NumberOfSamples {
             get {
-                return _NumSamples;
+                return _numSamples;
+            }
+        }
+
+        public CircularArray NoteArr {
+            get {
+                return _circArr;
             }
         }
 
@@ -35,17 +41,18 @@ namespace PianoSimulation
             Random rand = new Random();
             double MIN_VALUE = -0.5;
             double MAX_VALUE = 0.5;
-            double[] tempArr = new double[CircArr.Length];
+            double[] tempArr = new double[_circArr.Length];
             for (int i = 0; i < tempArr.Length;i++) {
-                tempArr[i] = rand.NextDouble() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE;
+                tempArr[i] = Math.Round((rand.NextDouble() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE),4);
             }
-            CircArr.Fill(tempArr);
+
+            _circArr.Fill(tempArr);
             
         }
 
         public double Sample(double decay=0.996) {
-            double newValue = ((CircArr[0] + CircArr[1]) / 2) * decay;
-            return CircArr.Shift(newValue);
+            double newValue = ((_circArr[0] + _circArr[1]) / 2) * decay;
+            return _circArr.Shift(newValue);
         }
     }
 }

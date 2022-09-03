@@ -1,4 +1,5 @@
 ﻿using System;
+using PianoSimulation;
 
 namespace KeyboardPiano
 {
@@ -6,7 +7,8 @@ namespace KeyboardPiano
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            PianoWire pw = new PianoWire(0.5, 2);
+            pw.Strike();
         }
     }
 }
