@@ -7,13 +7,15 @@ namespace PianoSimulation
 {
     public class PianoWire:IMusicalString
     {
-        CircularArray CircArr;
+        private CircularArray CircArr;
         private double _NoteFreq;
-        private int _SampleRate;
+        private int _NumSamples;
 
         public PianoWire(double NoteFreq, int SampleRate) {
             _NoteFreq = NoteFreq;
-            _SampleRate = SampleRate;
+            _NumSamples = Convert.ToInt32(SampleRate/NoteFreq);
+            CircArr = new CircularArray(_NumSamples);
+
         }
 
         public double NoteFrequency{
@@ -25,7 +27,7 @@ namespace PianoSimulation
 
         public int NumberOfSamples {
             get {
-                return _SampleRate;
+                return _NumSamples;
             }
         }
 
