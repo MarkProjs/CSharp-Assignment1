@@ -10,10 +10,17 @@ namespace PianoSimulation
         private string _keys;
         public Piano(string keys = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ",  int samplingRate = 44100) {
             _keys = keys;
+            for (int i = 0; i < keys.Length;i++) {
+                _pianoWires.Add(new PianoWire((Math.Pow(2,(i-24)/12.0))*440,samplingRate));
+            }
         }
 
         public void StrikeKey(char key) {
-
+            for (int i = 0; i < _keys.Length;i++) {
+                if (key == _keys[i]) {
+                    _pianoWires[i].Strike();
+                }
+            }
         }
 
         public double Play() {
