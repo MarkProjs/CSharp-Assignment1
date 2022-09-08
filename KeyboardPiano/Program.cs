@@ -7,8 +7,8 @@ namespace KeyboardPiano
     {
         static void Main(string[] args)
         {
-            PianoWire pw = new PianoWire(0.5, 2);
-            pw.Strike();
+            Piano piano = new Piano();
+            Audio audio = new Audio();
         }
     }
 }
