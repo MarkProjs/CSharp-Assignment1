@@ -16,20 +16,21 @@ namespace PianoSimulation
         }
 
         public void StrikeKey(char key) {
-            for (int i = 0; i < _keys.Length;i++) {
-                if (key == _keys[i]) {
-                    _pianoWires[i].Strike();
-                }
-            }
+            int index = _keys.IndexOf(key);
+            _pianoWires[index].Strike();
         }
 
         public double Play() {
-            double play = 0.0;
-            return play;
+            double sumSample = 0.0;
+            for (int i = 0;i < _pianoWires.Count;i++) {
+                sumSample += _pianoWires[i].Sample();
+            }
+            return sumSample;
         }
 
         public List<string> GetPianoKeys() {
             List<string> pianoKeys = new List<string>();
+            pianoKeys.Add(_keys);
 
             return pianoKeys;
         }
