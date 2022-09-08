@@ -6,9 +6,20 @@ namespace KeyboardPiano
     class Program
     {
         static void Main(string[] args)
-        {
-            Piano piano = new Piano();
-            Audio audio = new Audio();
+        {  
+            bool playPiano = true;
+            Console.WriteLine("Welcome to a Piano Simulation!");
+            
+
+            while (playPiano) {
+                
+                string UserInput = Console.ReadLine();
+                Piano piano = new Piano();
+                Audio audio = new Audio();
+
+            }
+
+            
         }
     }
 }
