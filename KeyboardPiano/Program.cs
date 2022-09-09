@@ -21,7 +21,13 @@ namespace KeyboardPiano
                 }
             }
             else if (Console.ReadKey().Key == ConsoleKey.Enter) {
-                   
+                   Console.WriteLine("What key would you like to hit?");
+                   string userInput = Console.ReadLine();
+
+                   if (userInput.Length == 1) {
+                       piano.StrikeKey(userInput.ToCharArray());
+                       
+                   }
             }
 
             
