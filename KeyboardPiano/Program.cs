@@ -7,16 +7,21 @@ namespace KeyboardPiano
     {
         static void Main(string[] args)
         {  
-            bool playPiano = true;
-            Console.WriteLine("Welcome to a Piano Simulation!");
+            Piano piano = new Piano();
+            Audio audio = new Audio();
             
-
-            while (playPiano) {
-                
-                string UserInput = Console.ReadLine();
-                Piano piano = new Piano();
-                Audio audio = new Audio();
-
+            Console.WriteLine("Welcome to a Piano Simulation!");
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine( "\t" +"If you want to list all the strings with their associated keys. Press Tab." + "\n" + 
+                             "\t" + "If you want to play the piano, press Enter." + "\n");
+            
+            if (Console.ReadKey().Key == ConsoleKey.Tab) {
+                for (int i = 0; i < piano.GetPianoKeys().Count;i++) {
+                    Console.WriteLine(piano.GetPianoKeys()[i]);
+                }
+            }
+            else if (Console.ReadKey().Key == ConsoleKey.Enter) {
+                   
             }
 
             

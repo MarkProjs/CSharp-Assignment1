@@ -18,19 +18,16 @@ namespace PianoSimulationTests
         }
         [TestMethod]
         public void testShift() {
-            CircularArray CArr = new CircularArray(5);
+            CircularArray CArr = new CircularArray(3);
             double[] Arr = {0.5, 0.2, 0.05};
             CArr.Fill(Arr);
-            Assert.AreEqual(CArr.Shift(0.2), 0.5);
+            CArr.Shift(0.1);
+            Assert.AreEqual(CArr[0], 0.1);
+            
+            CArr.Shift(0.3);
+            Assert.AreEqual(0.3, CArr[0]);
+            Assert.AreEqual(0.05, CArr[2]);
         }
 
-        [TestMethod]
-        public void testEndArray() {
-            CircularArray CArr = new CircularArray(5);
-            double[] Arr = {0.5, 0.2, 0.05};
-            CArr.Fill(Arr);
-            double firstNum = CArr.Shift(0.2);
-            Assert.AreEqual(CArr[CArr.Length-1], 0.2);
-        }
     }
 }
