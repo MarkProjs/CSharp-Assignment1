@@ -5,7 +5,7 @@ namespace PianoSimulation
 {
     public class CircularArray:IRingBuffer {   
         private double[] buffer;
-        private int Counter = 0;
+        private int _counter = 0;
 
         public CircularArray(int arrLength) {
             buffer = new double[arrLength];
@@ -16,14 +16,19 @@ namespace PianoSimulation
             
         }
 
+        public int Counter {
+            get { return _counter;}
+            set {_counter = value;}
+        }
+
         public double Shift(double value) {
-            double FirstVal = buffer[Counter];
-            buffer[Counter] = value;
-            if (Counter == buffer.Length -1) {
-                Counter = 0;
+            double FirstVal = buffer[_counter];
+            buffer[_counter] = value;
+            if (_counter == buffer.Length -1) {
+                _counter = 0;
             }
             else {
-                Counter += 1;
+                _counter += 1;
             }
             return FirstVal;
         }

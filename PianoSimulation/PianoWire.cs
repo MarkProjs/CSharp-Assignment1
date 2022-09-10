@@ -11,6 +11,9 @@ namespace PianoSimulation
         private double _noteFreq;
         private int _numSamples;
 
+        private double FirstBuffer = 0.0;
+        private double SecondBuffer = 0.0;
+
         public PianoWire(double NoteFreq, int SampleRate) {
             _noteFreq = NoteFreq;
             _numSamples = Convert.ToInt32(SampleRate/NoteFreq);
@@ -51,7 +54,15 @@ namespace PianoSimulation
         }
 
         public double Sample(double decay=0.996) {
-            double newValue = ((_circArr[0] + _circArr[1]) / 2) * decay;
+            if (_circArr.Counter == _circArr.Length -1) {
+                FirstBuffer = _circArr[_circArr.Counter -1];
+                SecondBuffer = _circArr[0];
+            }
+            else {
+                FirstBuffer = _circArr[_circArr.Counter];
+                SecondBuffer = _circArr[_circArr.Counter + 1];
+            }
+            double newValue = ((FirstBuffer + SecondBuffer) / 2) * decay;
             return _circArr.Shift(newValue);
         }
     }

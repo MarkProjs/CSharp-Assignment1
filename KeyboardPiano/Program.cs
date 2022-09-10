@@ -34,7 +34,10 @@ namespace KeyboardPiano
                         foreach (char item in userInput)
                         {
                             piano.StrikeKey(item);
-                            audio.Play(piano.Play());
+                            for (int i = 0; i < 44100 * 3; i++) {
+                                audio.Play(piano.Play());
+
+                            }
                         }
                         isTrue = false;
                     }
