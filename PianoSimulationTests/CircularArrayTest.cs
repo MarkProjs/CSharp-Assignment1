@@ -17,13 +17,13 @@ namespace PianoSimulationTests
             Assert.AreEqual(CArr.Length,2);
         }
         [TestMethod]
-        public void testShift() {
+        public void TestShift() {
             CircularArray CArr = new CircularArray(3);
             double[] Arr = {0.5, 0.2, 0.05};
             CArr.Fill(Arr);
 
             CArr.Shift(0.1);
-            Assert.AreEqual(CArr[0], 0.1);
+            Assert.AreEqual(0.1, CArr[0]);
             
             CArr.Shift(0.3);
             Assert.AreEqual(0.3, CArr[1]);
