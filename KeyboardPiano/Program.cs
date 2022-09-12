@@ -35,7 +35,6 @@ namespace KeyboardPiano
                                 Console.WriteLine("You can now play the piano. What key(s) would you like to play? Press 0 to escape.");
                                 string userInput = Console.ReadLine();
                                 foreach(char chinput in userInput) {
-
                                     if (chinput == '0') {
                                         Console.WriteLine("You are now returning to the main menu.");
                                         playPiano = false; 
